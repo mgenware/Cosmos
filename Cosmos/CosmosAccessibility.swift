@@ -13,7 +13,9 @@ struct CosmosAccessibility {
   */
     
   static func update(_ view: UIView, rating: Double, text: String?, settings: CosmosSettings) {
-    view.isAccessibilityElement = true
+    guard view.isAccessibilityElement else {
+      return
+    }
     
     view.accessibilityTraits = settings.updateOnTouch ?
       UIAccessibilityTraits.adjustable :UIAccessibilityTraits.none
